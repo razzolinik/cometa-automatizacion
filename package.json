@@ -1,0 +1,12 @@
+{
+  "name": "cometa-bot",
+  "version": "1.0.0",
+  "description": "Bot de consulta de stock y reserva de producto para Cometa - TPI Organizacion Empresarial",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "readline-sync": "^1.4.10"
+  }
+}
