@@ -1,0 +1,41 @@
+{
+  "productos": [
+    {
+      "codigo": "CPU-R5-5600",
+      "nombre": "Procesador AMD Ryzen 5 5600",
+      "precio": 185000,
+      "stock": 8
+    },
+    {
+      "codigo": "CPU-I5-12400F",
+      "nombre": "Procesador Intel Core i5-12400F",
+      "precio": 210000,
+      "stock": 5
+    },
+    {
+      "codigo": "RAM-COR-16-DDR4",
+      "nombre": "Memoria RAM Corsair Vengeance 16GB DDR4",
+      "precio": 42000,
+      "stock": 15
+    },
+    {
+      "codigo": "GPU-RTX4060",
+      "nombre": "Placa de video Gigabyte RTX 4060 8GB",
+      "precio": 520000,
+      "stock": 3
+    },
+    {
+      "codigo": "SSD-KING-1TB",
+      "nombre": "SSD Kingston NV2 1TB NVMe",
+      "precio": 68000,
+      "stock": 20
+    },
+    {
+      "codigo": "MB-ASUS-B550M",
+      "nombre": "Motherboard Asus Prime B550M-A",
+      "precio": 110000,
+      "stock": 0
+    }
+  ],
+  "reservas": []
+}
