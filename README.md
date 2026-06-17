@@ -2,11 +2,21 @@
 
 TPI de Organización Empresarial (UTN TUPaD). Bot por consola que automatiza el proceso de consulta de stock y reserva de producto para Cometa, un local de venta de hardware informático.
 
+## Alumnos - Comisión 5
+Razzolini Khiara
+Franco Rossi
+
 ## Descripción del proceso
 
 Hoy un cliente pregunta por teléfono o en el local si hay stock de un producto, el vendedor va a mirar manualmente y no queda ningún registro. El bot reemplaza esa consulta: el cliente ingresa el código de producto, si existe y hay stock suficiente la reserva se confirma y se descuenta del stock; si no hay stock suficiente se informa la cantidad real disponible.
 
-## Instalación
+## Stack Técnico
+* **Lenguaje:** JavaScript (Node.js)
+* **Arquitectura:** Máquina de estados.
+* **Persistencia:** JSON (archivo plano).
+
+## Instalación 
+Requisitos: Tener instalado Node.js (https://nodejs.org/es) 
 
 ```
 npm install
