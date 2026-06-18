@@ -3,8 +3,8 @@
 TPI de Organización Empresarial (UTN TUPaD). Bot por consola que automatiza el proceso de consulta de stock y reserva de producto para Cometa, un local de venta de hardware informático.
 
 ## Alumnos - Comisión 5
-Razzolini Khiara
-Franco Rossi
+* **Razzolini Khiara** 
+* **Franco Rossi** 
 
 ## Descripción del proceso
 
