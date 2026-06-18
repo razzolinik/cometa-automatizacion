@@ -16,7 +16,7 @@
       "codigo": "RAM-COR-16-DDR4",
       "nombre": "Memoria RAM Corsair Vengeance 16GB DDR4",
       "precio": 42000,
-      "stock": 11
+      "stock": 9
     },
     {
       "codigo": "GPU-RTX4060",
@@ -54,6 +54,27 @@
       "cliente": "Cliente simulado",
       "producto_codigo": "GPU-RTX4060",
       "cantidad": 50,
+      "estado": "sin_stock_suficiente"
+    },
+    {
+      "cliente": "Khiara",
+      "producto_codigo": "GPU-RTX4060",
+      "cantidad": 50,
+      "stock_al_momento": 3,
+      "estado": "sin_stock_suficiente"
+    },
+    {
+      "cliente": "Franco",
+      "producto_codigo": "RAM-COR-16-DDR4",
+      "cantidad": 2,
+      "stock_al_momento": 11,
+      "estado": "confirmada"
+    },
+    {
+      "cliente": "Max",
+      "producto_codigo": "MB-ASUS-B550M",
+      "cantidad": null,
+      "stock_al_momento": 0,
       "estado": "sin_stock_suficiente"
     }
   ]
