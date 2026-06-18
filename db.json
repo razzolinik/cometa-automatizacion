@@ -43,6 +43,18 @@
       "producto_codigo": "RAM-COR-16-DDR4",
       "cantidad": 4,
       "estado": "confirmada"
+    },
+    {
+      "cliente": "Cliente simulado",
+      "producto_codigo": "GPU-RTX4060",
+      "cantidad": 50,
+      "estado": "sin_stock_suficiente"
+    },
+    {
+      "cliente": "Cliente simulado",
+      "producto_codigo": "GPU-RTX4060",
+      "cantidad": 50,
+      "estado": "sin_stock_suficiente"
     }
   ]
 }
