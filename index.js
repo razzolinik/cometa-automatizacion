@@ -75,14 +75,20 @@ function pedirCantidadValida() {
 // Gateway 2: compara el stock disponible contra la cantidad pedida.
 // Si alcanza, descuenta el stock y registra la reserva como confirmada.
 // Si no alcanza, informa el stock real disponible y no reserva nada.
-function procesarReserva(db, producto, cantidadPedida) {
+// nombreCliente se recibe para que el registro identifique quien hizo la consulta.
+function procesarReserva(db, producto, cantidadPedida, nombreCliente) {
+  // Se guarda el stock disponible ANTES de descontar, para que el registro
+  // refleje el estado real del sistema en el momento de la consulta.
+  const stockAlMomento = producto.stock;
+
   if (producto.stock >= cantidadPedida) {
     producto.stock -= cantidadPedida;
 
     db.reservas.push({
-      cliente: "Cliente simulado",
+      cliente: nombreCliente,
       producto_codigo: producto.codigo,
       cantidad: cantidadPedida,
+      stock_al_momento: stockAlMomento,
       estado: "confirmada",
     });
 
@@ -95,9 +101,10 @@ function procesarReserva(db, producto, cantidadPedida) {
   }
 
   db.reservas.push({
-    cliente: "Cliente simulado",
+    cliente: nombreCliente,
     producto_codigo: producto.codigo,
     cantidad: cantidadPedida,
+    stock_al_momento: stockAlMomento,
     estado: "sin_stock_suficiente",
   });
 
@@ -115,10 +122,27 @@ function main() {
 
   const db = leerDB();
 
+  // Se pide el nombre para que el registro de reservas identifique quien consulta,
+  // en lugar de guardar siempre un valor fijo como "Cliente simulado".
+  const nombreCliente = readlineSync.question(
+    "Bot: Decime tu nombre, por favor.\nCliente: "
+  );
+
   const resultadoCodigo = pedirCodigoProducto(db);
 
   if (resultadoCodigo.estado === ESTADOS.FIN_DERIVADO) {
-    return; // conversacion derivada, no hay nada mas que hacer
+    // Antes esta rama no dejaba ningun registro. Ahora se guarda la derivacion
+    // para que el diccionario de datos (reserva.estado = "derivado") sea real
+    // y no solo un valor documentado que el codigo nunca generaba.
+    db.reservas.push({
+      cliente: nombreCliente,
+      producto_codigo: null,
+      cantidad: null,
+      stock_al_momento: null,
+      estado: "derivado",
+    });
+    guardarDB(db);
+    return;
   }
 
   const { producto } = resultadoCodigo;
@@ -129,6 +153,15 @@ function main() {
 
   // Caso especial: si no hay stock, ni se pide la cantidad (seccion 10 de la guia).
   if (producto.stock === 0) {
+    db.reservas.push({
+      cliente: nombreCliente,
+      producto_codigo: producto.codigo,
+      cantidad: null,
+      stock_al_momento: producto.stock,
+      estado: "sin_stock_suficiente",
+    });
+    guardarDB(db);
+
     console.log("Bot: Actualmente no tenemos stock disponible.");
     return;
   }
@@ -136,7 +169,7 @@ function main() {
   console.log("Bot: Cuantas unidades queres reservar?");
   const cantidadPedida = pedirCantidadValida();
 
-  procesarReserva(db, producto, cantidadPedida);
+  procesarReserva(db, producto, cantidadPedida, nombreCliente);
 }
 
 main();
